@@ -31,22 +31,8 @@
           <!-- Dropdown list -->
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="index.php?hal=pegawai">Pegawai</a></li>
-            <li><a class="dropdown-item" href="single-speaker.html">Single Speaker</a></li>
-            <li><a class="dropdown-item" href="gallery.html">Gallery</a></li>
-            <li><a class="dropdown-item" href="gallery-two.html">Gallery-02</a></li>
-            <li><a class="dropdown-item" href="testimonial.html">Testimonial</a></li>
-            <li><a class="dropdown-item" href="pricing.html">Pricing</a></li>
-            <li><a class="dropdown-item" href="FAQ.html">FAQ</a></li>
-            <li><a class="dropdown-item" href="404.html">404</a></li>
-                    
-            <li class="dropdown dropdown-submenu dropright">
-              <a class="dropdown-item dropdown-toggle" href="#!" id="dropdown0301" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sub Menu</a>
-    
-              <ul class="dropdown-menu" aria-labelledby="dropdown0301">
-                <li><a class="dropdown-item" href="index.html">Submenu 01</a></li>
-                <li><a class="dropdown-item" href="index.html">Submenu 02</a></li>
-              </ul>
-            </li>
+            <li><a class="dropdown-item" href="index.php?hal=divisi">Divisi</a></li>
+            <li><a class="dropdown-item" href="index.php?hal=jabatan">Jabatan</a></li>
           </ul>
         </li>
         
