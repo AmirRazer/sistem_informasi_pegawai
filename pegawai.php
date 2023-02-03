@@ -53,9 +53,19 @@ $data_pegawai = $model->dataPegawai();
                         <td>
                            <a href="index.php?hal=pegawai_detail&id= 
                            <?=$row['id'] ?> "> 
-                            <i class="fa fa-eye"></i>
+                           <button type="button" class="btn btn-info btn-sm" title="Detail Pegawai">
+                           <i class="fa fa-eye"></i>
+                           </button>
+                            </a>
+                            <a href="index.php?hal=pegawai_form&idedit= 
+                           <?=$row['id'] ?> "> 
+                           <button type="button" class="btn btn-warning btn-sm" title="Ubah Pegawai">
+                           <i class="fa fa-pencil-square-o" aria-hidden="true" ></i>
+                           </button>
+                            
                             </a>
                         </td>
+
                         </tr>
                        <?php $no++; } ?>
                     </tbody>
