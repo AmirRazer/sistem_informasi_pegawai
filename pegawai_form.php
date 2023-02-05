@@ -2,10 +2,16 @@
 //ciptakan objek dari class Jabatan dan Divisi
 $obj_jabatan = new Jabatan();
 $obj_divisi = new Divisi();
+$obj_pegawai = new Pegawai();
 //pangil fungsi untuk menampilkan data jabatan dan divisi
 $data_jabatan = $obj_jabatan->datajabatan();
 $data_divisi = $obj_divisi->dataDivisi();
 
+//--------------------Proses edit data ------------------
+//Tangkap requs=est edit di url (Setelah klik tombol edit/icon pencil)
+$idedit =$_REQUEST['idedit'];
+
+$peg = !empty($idedit) ?  $obj_pegawai->getPegawai($idedit) : array();
 ?>
 
 <section class="page-title bg-title overlay-dark">
@@ -38,12 +44,17 @@ $data_divisi = $obj_divisi->dataDivisi();
 		</div>
 		<form action="pegawai_controler.php" method="POST"class="row">
 			<div class="col-md-6">
-				<input type="text" class="form-control main" name="nip" id="nip" placeholder="Nip">
+			<label  class="form-label"><b>Nip</b></label>
+				<input type="text" class="form-control main" name="nip" id="nip" placeholder="Nip" value="<?= $peg['nip'] ?>">
 			</div>
 			<div class="col-md-6">
-				<input type="text" class="form-control main" name="nama" id="nama" placeholder="Nama">
+			<label  class="form-label"><b>Nama</b></label>
+				<input type="text" class="form-control main" name="nama" id="nama" placeholder="Nama" value="<?= $peg['nama'] ?>">
             </div>
-            <div class="col-md-6"><div class="form-check">
+            <div class="col-md-6">
+			<label  class="form-label"><b>Jenis Kelamin</b></label></br>
+			<div class="form-check">
+			
                 <input class="form-check-input" type="radio" name="gender" value="L">
                 <label class="form-check-label">
                     Laki Laki
@@ -57,15 +68,20 @@ $data_divisi = $obj_divisi->dataDivisi();
                 </div>
             </div>
             <div class="col-md-6">
-				<input type="text" class="form-control main" name="foto" id="foto" placeholder="Foto">
+			<label  class="form-label"><b>Foto</b></label>
+				<input type="text" class="form-control main" name="foto" id="foto" placeholder="Foto"  value="<?= $peg['foto'] ?>">
 			</div>
 			<div class="col-md-6">
-				<input type="text" class="form-control main" name="tmp_lahir"  placeholder="Tempat Lahir">
+			<label  class="form-label"><b>Tempat Lahir</b></label>
+				<input type="text" class="form-control main" name="tmp_lahir"  placeholder="Tempat Lahir"  value="<?= $peg['tmp_lahir'] ?>">
             </div>
+			
 			<div class="col-md-6">
-				<input type="date" class="form-control main" name="tgl_lahir" >
+			<label  class="form-label"><b>Tanggal Lahir</b></label>
+				<input type="date" class="form-control main" name="tgl_lahir"  value="<?= $peg['tgl_lahir'] ?>">
 			</div>
 			<div class="col-md-6">
+			<label  class="form-label"><b>Jabatan</b></label>
 				<div clas="form-group">
 			<select class="form-control main" name="jabatan" >
 					<option selected>-- Pilih Jabatan --</option>
@@ -80,6 +96,7 @@ $data_divisi = $obj_divisi->dataDivisi();
 					</div>		
 			</div>
 			<div class="col-md-6">
+			<label  class="form-label"><b>Divisi</b></label>
 			<div clas="form-group">
 			<select class="form-control main" name="divisi" >
 					<option selected>-- Pilih Divisi --</option>
@@ -91,15 +108,25 @@ $data_divisi = $obj_divisi->dataDivisi();
 					<option value="<?=$div['id']?>"><?=$div['nama'] ?></option>
 					<?php } ?>
 					</select>	
-					</div>            </div>
+					</div>
+					</div>
 			<div class="col-md-12">
-				<textarea name="alamat" id="alamat" class="form-control main" rows="10" placeholder="Alamat"></textarea>
+			<label  class="form-label"><b>Alamat</b></label>
+				<textarea name="alamat" id="alamat" class="form-control main" rows="10" placeholder="Alamat"><?= $peg['alamat'] ?></textarea>
 			</div>
 			<div class="col-12 text-center">
-				<button type="submit" name="proses" value="simpan"class="btn btn-main-md">Simpan</button>
-			</div>
-			<div class="col-12 text-center">
-				<button type="submit" name="proses" value="batal"class="btn btn-info-md">Batal</button>
+			<?php
+			//=================modus entry data baru, form dlm keadaan kosoong==========
+			if(empty($idedit)){
+			?>
+				<button type="submit" name="proses" value="simpan"class="btn btn-success btn-lg">Simpan</button>
+			<?php } 
+			//==========modus edit data lama, form terisi daata lama============
+			else{
+			?>
+				<button type="submit" name="proses" value="ubah"class="btn btn-warning btn-lg">Ubah</button>
+			<?php } ?>			
+				<button type="submit" name="proses" value="batal"class="btn btn-info btn-lg">Batal</button>
 			</div>
 		</form>
 	</div>

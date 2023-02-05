@@ -51,13 +51,20 @@ $pegawai = $model->getPegawai($id);
 							<li>Tempat lahir :<?= $pegawai['tmp_lahir'] ?></li>
 							<li>Tanggal Lahir :<?= $pegawai['tgl_lahir'] ?></li>
 							<li>Alamat : <?= $pegawai['alamat'] ?></li>
-						</ul>	
-						</div>
+						</ul>
 						
+						</div>
+						<p align="right">
+						<a href="index.php?hal=pegawai" class="btn btn-primary btn-sm"
+						title="back">
+						<i class="fa fa-hand-o-left" aria-hidden="true"></i>
+						</a>
+						</p>
 					
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+	
 </section>
