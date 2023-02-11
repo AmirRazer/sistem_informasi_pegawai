@@ -53,19 +53,22 @@ $peg = !empty($idedit) ?  $obj_pegawai->getPegawai($idedit) : array();
             </div>
             <div class="col-md-6">
 			<label  class="form-label"><b>Jenis Kelamin</b></label></br>
+
+			<?php 
+			$ar_gender = ['L '=> 'Laki-Laki','P'=> 'Perempuan'];
+			foreach($ar_gender as $k => $jk){
+				
+				//proses edit gender
+				$cek = $peg['gender'] == $k ? 'checked' : '';
+			?>
 			<div class="form-check">
 			
-                <input class="form-check-input" type="radio" name="gender" value="L">
+                <input class="form-check-input" type="radio" name="gender" value="<?= $k ?>" <?= $cek ?>>
                 <label class="form-check-label">
-                    Laki Laki
+                    <?= $jk ?>
                 </label>
                 </div>
-                <div class="form-check">
-                <input class="form-check-input" type="radio" name="gender" value="P">
-                <label class="form-check-label" >
-                    Perempuan
-                </label>
-                </div>
+			<?php } ?>
             </div>
             <div class="col-md-6">
 			<label  class="form-label"><b>Foto</b></label>
@@ -87,10 +90,11 @@ $peg = !empty($idedit) ?  $obj_pegawai->getPegawai($idedit) : array();
 					<option selected>-- Pilih Jabatan --</option>
 					<?php
 					foreach($data_jabatan as $jab){
-
+						//edit jabatan
+						$sel1 = $peg['jabatan_id'] == $jab['id'] ? 'selected' : '';
 					
 					?>
-					<option value="<?=$jab['id']?>"><?=$jab['nama'] ?></option>
+					<option value="<?=$jab['id']?>"<?= $sel1?>><?=$jab['nama'] ?></option>
 					<?php } ?>
 					</select>	
 					</div>		
@@ -102,10 +106,11 @@ $peg = !empty($idedit) ?  $obj_pegawai->getPegawai($idedit) : array();
 					<option selected>-- Pilih Divisi --</option>
 					<?php
 					foreach($data_divisi as $div){
-
+					//edit divisi
+					$sel2 = $peg['divisi_id'] == $div['id'] ? 'selected' : '';
 					
 					?>
-					<option value="<?=$div['id']?>"><?=$div['nama'] ?></option>
+					<option value="<?=$div['id']?>"<?= $sel2 ?>><?=$div['nama'] ?></option>
 					<?php } ?>
 					</select>	
 					</div>
@@ -125,6 +130,8 @@ $peg = !empty($idedit) ?  $obj_pegawai->getPegawai($idedit) : array();
 			else{
 			?>
 				<button type="submit" name="proses" value="ubah"class="btn btn-warning btn-lg">Ubah</button>
+				<!-- hidden filed untuk yang klausa where id=? -->
+				<input type="hidden" name="idx" value="<?= $idedit ?>">
 			<?php } ?>			
 				<button type="submit" name="proses" value="batal"class="btn btn-info btn-lg">Batal</button>
 			</div>

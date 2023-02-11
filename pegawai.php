@@ -51,6 +51,7 @@ $data_pegawai = $model->dataPegawai();
                         <td><?= $row['jab'] ?></td>
                         <td><?= $row['alamat'] ?></td>
                         <td>
+                        <form action="pegawai_controler.php" method="POST">
                            <a href="index.php?hal=pegawai_detail&id= 
                            <?=$row['id'] ?> "> 
                            <button type="button" class="btn btn-info btn-sm" title="Detail Pegawai">
@@ -64,6 +65,13 @@ $data_pegawai = $model->dataPegawai();
                            </button>
                             
                             </a>
+                            <button type="submit" class="btn btn-danger btn-sm" name="proses" value ="hapus"
+                            onclick="return confirm('Anda Yakin Data di hamus?')" title="Hapus Pegawai">
+                           
+                            <i class="fa fa-trash-o" aria-hidden="true"></i>
+                           </button>
+                           <input type="hidden" name="idx" value="<?= $row['id']?>">
+                            </form>
                         </td>
 
                         </tr>

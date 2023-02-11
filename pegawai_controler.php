@@ -30,6 +30,20 @@ switch ($tombol) {
     case 'simpan':
         $model->simpan($data);
         break;
+
+        case 'ubah':
+            //tangkap hiden field idx untuk klausa where id
+            $data[] = $_POST['idx'];
+            $model->ubah($data);
+            break;
+
+            case 'hapus':
+                //hapus 9 data di atas
+                //panggil method hapus data di sertai tangkap hidden field idx unyuk klausa wher id
+                unset($data);               
+                $model->hapus($_POST['idx']);
+                break;
+        
     
     default:
        header('Location:index.php?hal=pegawai');
